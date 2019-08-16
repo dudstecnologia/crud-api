@@ -15,7 +15,6 @@ class AuthController extends Controller
 {
     public function register(AuthRegisterRequest $request)
     {
-
         $user = new User([
             'name' => $request->name,
             'email' => $request->email,
