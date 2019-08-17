@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Http\Requests\AlunoRequest;
 use App\Model\Aluno;
 use App\Model\Curso;
+use App\Model\Professor;
 
 class AlunoController extends Controller
 {
@@ -45,5 +46,24 @@ class AlunoController extends Controller
     public function destroy(Aluno $aluno)
     {
         $aluno->delete();
+    }
+
+    public function relatorio() {
+
+        //$aluno = Aluno::with('cursos')->get();
+        //$aluno = Aluno::with('professors')->with('cursos')->get();
+
+        $alunos = \DB::table('alunos')
+            ->join('cursos', 'cursos.id', '=', 'alunos.id_curso')
+            ->join('professors', 'professors.id', '=', 'cursos.id_professor')
+            ->select('alunos.id', 'alunos.nome as nome_aluno', 'alunos.data_nascimento', 'cursos.nome as nome_curso', 'professors.nome as nome_professor')
+            ->get();
+        
+        /*
+        return PDF::loadView('relatorio', compact('alunos'))
+            ->download('Relatorio.pdf');
+        */
+        
+        return $alunos;
     }
 }

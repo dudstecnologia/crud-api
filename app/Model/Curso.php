@@ -12,4 +12,9 @@ class Curso extends Model
     {
         return $this->hasOne(Professor::class, 'id', 'id_professor');
     }
+
+    public function alunos()
+    {
+        return $this->hasMany(Aluno::class, 'id_curso', 'id');
+    }
 }

@@ -10,6 +10,6 @@ class Aluno extends Model
         'numero', 'bairro', 'cidade', 'estado', 'cep', 'id_curso'];
 
     public function cursos() {
-        return $this->hasOne(Curso::class, 'id', 'id_curso');
+        return $this->hasMany(Curso::class, 'id', 'id_curso');
     }
 }
