@@ -11,7 +11,7 @@ class AlunoController extends Controller
 {
     public function index()
     {
-        $aluno = Aluno::with('cursos')->get(['id', 'nome', 'id_curso']);
+        $aluno = Aluno::with('cursos')->get(['id', 'nome', 'data_nascimento', 'id_curso']);
 
         return $aluno;
     }
