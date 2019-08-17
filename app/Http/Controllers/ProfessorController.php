@@ -15,7 +15,6 @@ class ProfessorController extends Controller
 
     public function store(ProfessorRequest $request)
     {
-
         if(Professor::where('nome', $request->nome)
             ->where('data_nascimento', $request->data_nascimento)
             ->count() != 0) {
