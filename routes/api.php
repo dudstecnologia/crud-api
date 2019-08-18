@@ -10,6 +10,7 @@ Route::prefix('auth')->group( function () {
         Route::get('logout', 'AuthController@logout');
         Route::get('user', 'AuthController@user');
         Route::get('relatorio', 'AlunoController@relatorio');
+        Route::get('teste', 'AuthController@teste');
 
         Route::resources([
             '/professor'    => 'ProfessorController',
