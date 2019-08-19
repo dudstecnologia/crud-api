@@ -7,6 +7,7 @@ use App\Http\Requests\AlunoRequest;
 use App\Model\Aluno;
 use App\Model\Curso;
 use App\Model\Professor;
+use PDF;
 
 class AlunoController extends Controller
 {
@@ -61,11 +62,7 @@ class AlunoController extends Controller
             ->select('alunos.id', 'alunos.nome as nome_aluno', 'alunos.data_nascimento', 'cursos.nome as nome_curso', 'professors.nome as nome_professor')
             ->get();
         
-        /*
         return PDF::loadView('relatorio', compact('alunos'))
             ->download('Relatorio.pdf');
-        */
-        
-        return $alunos;
     }
 }
