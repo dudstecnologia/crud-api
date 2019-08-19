@@ -12,9 +12,11 @@ class AlunoController extends Controller
 {
     public function index()
     {
-        $aluno = Aluno::with('cursos')->get(['id', 'nome', 'data_nascimento', 'id_curso']);
+        $cursos = Curso::all();
 
-        return $aluno;
+        $alunos = Aluno::with('cursos')->get(['id', 'nome', 'data_nascimento', 'id_curso']);
+
+        return ["alunos" => $alunos, "cursos" => $cursos];
     }
 
     public function store(AlunoRequest $request)
